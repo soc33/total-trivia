@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,22 +17,35 @@
     <!-- linking google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Press+Start+2P|Teko" rel="stylesheet">
 </head>
+
 <body>
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
     <div class="container">
         <h1>Minecraft Trivia!</h1>
         <hr><br>
-        <div id="timer">
-            Time Left: 30 Seconds
-        </div><br>
-        <div id="question">
-            Sample Question Text
-        </div><br>
-        <div id="answerChoices">
-            <p id="answerChoiceOne">sample1</p>
-            <p id="answerChoiceTwo">sample2</p>
-            <p id="answerChoiceThree">sample3</p>
-            <p id="answerChoiceFour">sample4</p>
+        <button id="startButton">Start</button>
+        <div id="game">
+            <div id="timer">
+                Time Left: 30 seconds
+            </div><br>
+            <div id="question">
+                Sample Question Text
+            </div><br>
+            <div id="answerChoices">
+                <p id="answerChoiceOne">sample1</p>
+                <p id="answerChoiceTwo">sample2</p>
+                <p id="answerChoiceThree">sample3</p>
+                <p id="answerChoiceFour">sample4</p>
+            </div>
+        </div>
+        <div id="scoreBoard">
+            <div id="winLossText"></div><br>
+            <div id="score"></div><br>
+            <div id="answer"></div><br>
+            <div id="picture"></div><br>
+            <button id="next">Next Question</button>
         </div>
     </div>
 </body>
+
 </html>
