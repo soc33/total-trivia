@@ -1,22 +1,22 @@
 var questionArr = [
     question1 = {
-        questionText: "question1",
-        answer1: "a1",
-        answer2: "a2",
-        answer3: "a3",
-        answer4: "a4",
-        correctAnswer: "a1",
-        picture: "<img src='' height='200' width='auto'></img>"
+        questionText: "Which of these can NOT be crafted into armor?",
+        answer1: "wood",
+        answer2: "diamond",
+        answer3: "iron",
+        answer4: "leather",
+        correctAnswer: "wood",
+        picture: "<img src='assets/images/Inkedwood.jpg' height='200' width='auto'></img>"
     },
 
     question2 = {
-        questionText: "question2",
-        answer1: "b1",
-        answer2: "b2",
-        answer3: "b3",
-        answer4: "b4",
-        correctAnswer: "b2",
-        picture: "<img src='' height='200' width='auto'></img>"
+        questionText: "How do you make a large chest?",
+        answer1: "Place two chests next to each other",
+        answer2: "Place one chest on top of another",
+        answer3: "Craft it by placing two chests next to each other in your workbench",
+        answer4: "Use twice as much wood in the workbench",
+        correctAnswer: "Place two chests next to each other",
+        picture: "<img src='assets/images/chests.png' height='200' width='auto'></img>"
     }];
 
 $(document).ready(function () {
@@ -88,19 +88,25 @@ $(document).ready(function () {
     function setWinLoss() {
         $("#answer").text("The answer was: " + questionArr[i].correctAnswer);
         $("#picture").html(questionArr[i].picture);
+        $("#score").text("Unanswered: " + timeouts + " Losses: " + losses + " Wins: " + wins);
+        clearInterval(intervalId);
         i++;
     }
 
     function lost() {
         losses++;
+        $("#game").css("display", "none");
+        $("#scoreBoard").css("display", "block");
         $("#winLossText").text("You lost!");
         setWinLoss();
     }
 
     function win() {
         wins++;
+        $("#game").css("display", "none");
+        $("#scoreBoard").css("display", "block");
         $("#winLossText").text("You won!");
-        setWinLoss;
+        setWinLoss();
     }
 
     //function for on click of next button
@@ -114,28 +120,28 @@ $(document).ready(function () {
 
     // function for picking an answer choice 
     $("#answerChoiceOne").click(function () {
-        if (questionArr[i].answer1 === questionArr[i].correctAnswer) {
+        if (questionArr[i].answer1.text === questionArr[i].correctAnswer.text) {
             win();
         } else {
             lost();
         }
     });
     $("#answerChoiceTwo").click(function () {
-        if (questionArr[i].answer1 === questionArr[i].correctAnswer) {
+        if (questionArr[i].answer2 === questionArr[i].correctAnswer) {
             win();
         } else {
             lost();
         }
     });
     $("#answerChoiceThree").click(function () {
-        if (questionArr[i].answer1 === questionArr[i].correctAnswer) {
+        if (questionArr[i].answer3 === questionArr[i].correctAnswer) {
             win();
         } else {
             lost();
         }
     });
     $("#answerChoiceFour").click(function () {
-        if (questionArr[i].answer1 === questionArr[i].correctAnswer) {
+        if (questionArr[i].answer4 === questionArr[i].correctAnswer) {
             win();
         } else {
             lost();
