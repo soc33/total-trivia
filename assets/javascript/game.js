@@ -17,13 +17,93 @@ var questionArr = [
         answer4: "Use twice as much wood in the workbench",
         correctAnswer: "Place two chests next to each other",
         picture: "<img src='assets/images/chests.png' height='200' width='auto'></img>"
+    },
+
+    question3 = {
+        questionText: "Which of these can be used as fuel for your furnace?",
+        answer1: "A Bucket of Lava",
+        answer2: "All of these",
+        answer3: "Charcoal",
+        answer4: "Coal",
+        correctAnswer: "All of these",
+        picture: "<img src='assets/images/Lava_Bucket.png' height='200' width='auto'></img>"
+    },
+    
+    question4 = {
+        questionText: "Which tool must you use to mine stone and ores?",
+        answer1: "Shovel",
+        answer2: "Axe",
+        answer3: "Pickaxe",
+        answer4: "Hoe",
+        correctAnswer: "Pickaxe",
+        picture: "<img src='assets/images/pickaxe.jpg' height='200' width='auto'></img>"
+    },
+
+    question5 = {
+        questionText: "What must you use to collect water and lava?",
+        answer1: "cup",
+        answer2: "bowl",
+        answer3: "thermos",
+        answer4: "bucket",
+        correctAnswer: "bucket",
+        picture: "<img src='assets/images/bucketWater.gif' height='200' width='auto'></img>"
+    },
+
+    question6 = {
+        questionText: "Which two blocks are affected by gravity?",
+        answer1: "Sand and Gravel",
+        answer2: "Dirt and Gravel",
+        answer3: "Sand and Dirt",
+        answer4: "Gravel and Wood",
+        correctAnswer: "Sand and Gravel",
+        picture: "<img src='assets/images/sand_fall.gif' height='200' width='auto'></img>"
+    },
+
+    question7 = {
+        questionText: "What block or blocks are formed when water meets lava (in any circumstance)?",
+        answer1: "Just Obsidian",
+        answer2: "Dirt and Obsidian",
+        answer3: "Obsidian, Cobblestone and Stone",
+        answer4: "Cobblestone and Dirt",
+        correctAnswer: "Obsidian, Cobblestone and Stone",
+        picture: "<img src='assets/images/lava.gif' height='200' width='auto'></img>"
+    },
+
+    question8 = {
+        questionText: "Which of these is the name of an alternate world to which you can travel?",
+        answer1: "The Void",
+        answer2: "The Nether",
+        answer3: "Hell",
+        answer4: "The Under",
+        correctAnswer: "The Nether",
+        picture: "<img src='assets/images/nether.jpg' height='200' width='auto'></img>"
+    },
+
+    question9 = {
+        questionText: "How many blocks of iron ore does it take to make one iron ingot?",
+        answer1: "Nine",
+        answer2: "Two",
+        answer3: "Eight",
+        answer4: "One",
+        correctAnswer: "One",
+        picture: "<img src='assets/images/make_iron_ingot.png' height='200' width='auto'></img>"
+    },
+
+    question10 = {
+        questionText: "Skeletons drop bones, and pigs drop pork chops. What do zombies drop?",
+        answer1: "Brains",
+        answer2: "Rotten Flesh",
+        answer3: "Nothing",
+        answer4: "Bones",
+        correctAnswer: "Rotten Flesh",
+        picture: "<img src='assets/images/zombie.jpg' height='200' width='auto'></img>"
     }];
 
 $(document).ready(function () {
     //starting variables for game
     var intervalId;
     var clockRunning = false;
-    var time = 5;
+    var time = 30;
     var losses = 0;
     var timeouts = 0;
     var wins = 0;
@@ -63,7 +143,7 @@ $(document).ready(function () {
     function stop() {
         clockRunning = false;
         clearInterval(intervalId);
-        time = 5;
+        time = 30;
         $("#timer").text("Time Left: " + time + " seconds");
     }
 
@@ -111,16 +191,22 @@ $(document).ready(function () {
 
     //function for on click of next button
     $("#next").click(function () {
-        $("#scoreBoard").css("display", "none");
-        $("#game").css("display", "block");
-        start();
-        startGame();
-
+        if (i === 10) {
+            $("#winLossText").text("Here's how you did!:");
+            $("#score").text("Unanswered: " + timeouts + " Losses: " + losses + " Wins: " + wins);
+            $("#answer").text("");
+            $("#picture").html("<img src='assets/images/gameOver.png' height='200' width='auto'></img>");
+        } else {
+            $("#scoreBoard").css("display", "none");
+            $("#game").css("display", "block");
+            start();
+            startGame();
+        }
     });
 
     // function for picking an answer choice 
     $("#answerChoiceOne").click(function () {
-        if (questionArr[i].answer1.text === questionArr[i].correctAnswer.text) {
+        if (questionArr[i].answer1 === questionArr[i].correctAnswer) {
             win();
         } else {
             lost();
