@@ -169,7 +169,7 @@ $(document).ready(function () {
         $("#answer").text("The answer was: " + questionArr[i].correctAnswer);
         $("#picture").html(questionArr[i].picture);
         $("#score").text("Unanswered: " + timeouts + " Losses: " + losses + " Wins: " + wins);
-        clearInterval(intervalId);
+        stop();
         i++;
     }
 
@@ -196,6 +196,7 @@ $(document).ready(function () {
             $("#score").text("Unanswered: " + timeouts + " Losses: " + losses + " Wins: " + wins);
             $("#answer").text("");
             $("#picture").html("<img src='assets/images/gameOver.png' height='200' width='auto'></img>");
+            $("#next").css("display", "none");
         } else {
             $("#scoreBoard").css("display", "none");
             $("#game").css("display", "block");
