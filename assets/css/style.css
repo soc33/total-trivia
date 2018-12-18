@@ -1,6 +1,8 @@
-body {
+html, body {
     background-image: url("../images/background3.png");
-    background-size: auto;
+    background-size: cover;
+    height: 100%;
+    overflow-x: hidden;
     background-repeat: no-repeat;
     font-family: 'Permanent Marker', cursive;
 }
