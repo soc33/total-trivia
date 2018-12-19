@@ -199,7 +199,8 @@ $(document).ready(function () {
             $("#score").text("Unanswered: " + timeouts + " Wrong Answers: " + losses + " Right Answers: " + wins);
             $("#answer").text("");
             $("#picture").html("<img src='assets/images/gameOver.png' height='200' width='auto'></img>");
-            $("#next").css("display", "none");
+            $("#replay").css("display", "block");
+            $("#replay").text("Replay?");
         } else {
             $("#scoreBoard").css("display", "none");
             $("#game").css("display", "block");
@@ -237,7 +238,6 @@ $(document).ready(function () {
             lost();
         }
     });
-
 
 });
 

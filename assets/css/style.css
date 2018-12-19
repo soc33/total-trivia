@@ -45,12 +45,19 @@ p:hover {
 button {
     margin-left: 42%;
     margin-bottom: 15px;
+    background-color: black;
+    color: white;
+}
+button:hover {
+    background-image: url(../images/break.gif);
+    background-position: center;
+    color: black;
 }
 #scoreBoard {
     display: none;
     text-align: center;
     font-size: 30px;
 }
-#next {
-    margin-left: auto;
+#replay {
+    display: none;
 }
