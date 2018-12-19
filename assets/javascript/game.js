@@ -6,7 +6,7 @@ var questionArr = [
         answer3: "iron",
         answer4: "leather",
         correctAnswer: "wood",
-        picture: "<img src='assets/images/Inkedwood.jpg' height='200' width='auto'></img>"
+        picture: "<img src='assets/images/Inkedwood.jpg' height='200' width='auto'/>"
     },
 
     question2 = {
@@ -16,7 +16,7 @@ var questionArr = [
         answer3: "Craft it by placing two chests next to each other in your workbench",
         answer4: "Use twice as much wood in the workbench",
         correctAnswer: "Place two chests next to each other",
-        picture: "<img src='assets/images/chests.png' height='200' width='auto'></img>"
+        picture: "<img src='assets/images/chests.png' height='200' width='auto'/>"
     },
 
     question3 = {
@@ -26,9 +26,9 @@ var questionArr = [
         answer3: "Charcoal",
         answer4: "Coal",
         correctAnswer: "All of these",
-        picture: "<img src='assets/images/Lava_Bucket.png' height='200' width='auto'></img>"
+        picture: "<img src='assets/images/Lava_Bucket.png' height='200' width='auto'/>"
     },
-    
+
     question4 = {
         questionText: "Which tool must you use to mine stone and ores?",
         answer1: "Shovel",
@@ -36,7 +36,7 @@ var questionArr = [
         answer3: "Pickaxe",
         answer4: "Hoe",
         correctAnswer: "Pickaxe",
-        picture: "<img src='assets/images/pickaxe.jpg' height='200' width='auto'></img>"
+        picture: "<img src='assets/images/pickaxe.jpg' height='200' width='auto'/>"
     },
 
     question5 = {
@@ -46,7 +46,7 @@ var questionArr = [
         answer3: "thermos",
         answer4: "bucket",
         correctAnswer: "bucket",
-        picture: "<img src='assets/images/bucketWater.gif' height='200' width='auto'></img>"
+        picture: "<img src='assets/images/bucketWater.gif' height='200' width='auto'/>"
     },
 
     question6 = {
@@ -56,7 +56,7 @@ var questionArr = [
         answer3: "Sand and Dirt",
         answer4: "Gravel and Wood",
         correctAnswer: "Sand and Gravel",
-        picture: "<img src='assets/images/sand_fall.gif' height='200' width='auto'></img>"
+        picture: "<img src='assets/images/sand_fall.gif' height='200' width='auto'/>"
     },
 
     question7 = {
@@ -66,7 +66,7 @@ var questionArr = [
         answer3: "Obsidian, Cobblestone and Stone",
         answer4: "Cobblestone and Dirt",
         correctAnswer: "Obsidian, Cobblestone and Stone",
-        picture: "<img src='assets/images/lava.gif' height='200' width='auto'></img>"
+        picture: "<img src='assets/images/lava.gif' height='200' width='auto'/>"
     },
 
     question8 = {
@@ -76,7 +76,7 @@ var questionArr = [
         answer3: "Hell",
         answer4: "The Under",
         correctAnswer: "The Nether",
-        picture: "<img src='assets/images/nether.jpg' height='200' width='auto'></img>"
+        picture: "<img src='assets/images/nether.jpg' height='200' width='auto'/>"
     },
 
     question9 = {
@@ -86,7 +86,7 @@ var questionArr = [
         answer3: "Eight",
         answer4: "One",
         correctAnswer: "One",
-        picture: "<img src='assets/images/make_iron_ingot.png' height='200' width='auto'></img>"
+        picture: "<img src='assets/images/make_iron_ingot.png' height='200' width='auto'/>"
     },
 
     question10 = {
@@ -96,7 +96,7 @@ var questionArr = [
         answer3: "Nothing",
         answer4: "Bones",
         correctAnswer: "Rotten Flesh",
-        picture: "<img src='assets/images/zombie.jpg' height='200' width='auto'></img>"
+        picture: "<img src='assets/images/zombie.jpg' height='200' width='auto'/>"
     }];
 
 $(document).ready(function () {
@@ -107,7 +107,7 @@ $(document).ready(function () {
     var losses = 0;
     var timeouts = 0;
     var wins = 0;
-    var timeoutPicture = "<img src='assets/images/running-out-of-time.jpg' height='200' width='auto'></img>";
+    var timeoutPicture = "<img src='assets/images/running-out-of-time.jpg' height='200' width='auto'/>";
     // var userName = prompt("What's your name?");
 
     //function to start the timer
@@ -125,10 +125,11 @@ $(document).ready(function () {
             $("#game").css("display", "none");
             $("#scoreBoard").css("display", "block");
             timeouts++;
-            $("#score").text("Unanswered: " + timeouts + " Losses: " + losses + " Wins: " + wins);
+            $("#score").text("Unanswered: " + timeouts + " Wrong Answers: " + losses + " Right Answers: " + wins);
             $("#winLossText").text("You ran out of time!");
             $("#picture").html(timeoutPicture);
             i++;
+            setTimeout(nextQuestion, 4000);
         }
     }
 
@@ -168,9 +169,10 @@ $(document).ready(function () {
     function setWinLoss() {
         $("#answer").text("The answer was: " + questionArr[i].correctAnswer);
         $("#picture").html(questionArr[i].picture);
-        $("#score").text("Unanswered: " + timeouts + " Losses: " + losses + " Wins: " + wins);
+        $("#score").text("Unanswered: " + timeouts + " Wrong Answers: " + losses + " Right Answers: " + wins);
         stop();
         i++;
+        setTimeout(nextQuestion, 4000);
     }
 
     function lost() {
@@ -190,10 +192,11 @@ $(document).ready(function () {
     }
 
     //function for on click of next button
-    $("#next").click(function () {
+
+    function nextQuestion() {
         if (i === 10) {
             $("#winLossText").text("Here's how you did!:");
-            $("#score").text("Unanswered: " + timeouts + " Losses: " + losses + " Wins: " + wins);
+            $("#score").text("Unanswered: " + timeouts + " Wrong Answers: " + losses + " Right Answers: " + wins);
             $("#answer").text("");
             $("#picture").html("<img src='assets/images/gameOver.png' height='200' width='auto'></img>");
             $("#next").css("display", "none");
@@ -203,7 +206,7 @@ $(document).ready(function () {
             start();
             startGame();
         }
-    });
+    }
 
     // function for picking an answer choice 
     $("#answerChoiceOne").click(function () {
