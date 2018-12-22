@@ -120,7 +120,9 @@ $(document).ready(function () {
 
     //function to check if user is out of time
     function checkForTimeOut() {
-        if (time === 0) {
+        if (time === 3) {
+            $("#timeAlmostOut-audio").get(0).play();
+        } else if (time === 0) {
             stop();
             $("#game").css("display", "none");
             $("#scoreBoard").css("display", "block");
@@ -128,6 +130,7 @@ $(document).ready(function () {
             $("#score").text("Unanswered: " + timeouts + " Wrong Answers: " + losses + " Right Answers: " + wins);
             $("#winLossText").text("You ran out of time!");
             $("#picture").html(timeoutPicture);
+            $("#timeout-audio").get(0).play();
             i++;
             setTimeout(nextQuestion, 4000);
         }
@@ -152,6 +155,7 @@ $(document).ready(function () {
     $("#startButton").click(function () {
         $("#startButton").css("display", "none");
         $("#game").css("display", "block");
+        $("#next-audio").get(0).play();
         start();
         startGame();
     });
@@ -196,6 +200,7 @@ $(document).ready(function () {
     function nextQuestion() {
         if (i === 10) {
             $("#winLossText").text("Here's how you did!:");
+            $("#levelUp-audio").get(0).play();
             $("#score").text("Unanswered: " + timeouts + " Wrong Answers: " + losses + " Right Answers: " + wins);
             $("#answer").text("");
             $("#picture").html("<img src='assets/images/gameOver.png' height='200' width='auto'></img>");
@@ -204,6 +209,7 @@ $(document).ready(function () {
         } else {
             $("#scoreBoard").css("display", "none");
             $("#game").css("display", "block");
+            $("#next-audio").get(0).play();
             start();
             startGame();
         }
@@ -213,30 +219,41 @@ $(document).ready(function () {
     $("#answerChoiceOne").click(function () {
         if (questionArr[i].answer1 === questionArr[i].correctAnswer) {
             win();
+            $("#yes-audio").get(0).play();
         } else {
             lost();
+            $("#no-audio").get(0).play();
         }
     });
     $("#answerChoiceTwo").click(function () {
         if (questionArr[i].answer2 === questionArr[i].correctAnswer) {
             win();
+            $("#yes-audio").get(0).play();
         } else {
             lost();
+            $("#no-audio").get(0).play();
         }
     });
     $("#answerChoiceThree").click(function () {
         if (questionArr[i].answer3 === questionArr[i].correctAnswer) {
             win();
+            $("#yes-audio").get(0).play();
         } else {
             lost();
+            $("#no-audio").get(0).play();
         }
     });
     $("#answerChoiceFour").click(function () {
         if (questionArr[i].answer4 === questionArr[i].correctAnswer) {
             win();
+            $("#yes-audio").get(0).play();
         } else {
             lost();
+            $("#no-audio").get(0).play();
         }
+    });
+    $("#startButton").mouseenter(function () {
+        $("#break-audio").get(0).play();
     });
 
 });
