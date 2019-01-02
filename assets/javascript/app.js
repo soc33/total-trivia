@@ -151,6 +151,20 @@ $(document).ready(function () {
         $("#timer").text("Time Left: " + time + " seconds");
     }
 
+    // function for replay button
+    $("#replay").click(function () {
+        $("#replay").css("display", "none");
+        $("#game").css("display", "block");
+        i = 0;
+        wins = 0;
+        losses = 0;
+        timeouts = 0;
+        $("#scoreBoard").css("display", "none");
+        start();
+        startGame();
+        // nextQuestion();
+    });
+
     // function for onclick of start button
     $("#startButton").click(function () {
         $("#startButton").css("display", "none");
